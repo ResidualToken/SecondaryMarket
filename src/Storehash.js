@@ -3,7 +3,7 @@ import web3 from './Web3';
 
 //Your contract address
 
-const address = '0x5E72914535f202659083Db3a02C984188Fa26e9f';
+const address = '0xD9F0F7A8aB3fC4aeD8e749c80568a11E99df0a5e';
 
 //Your contract ABI
 

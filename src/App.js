@@ -55,14 +55,24 @@ class App extends Component {
     const ethAddress = await storehash.options.address;
     this.setState({ ethAddress });
     //save document to IPFS,return its hash#, and set hash# to state   
+    await window.ethereum.enable();
+    console.log('web3.isConnected', web3.eth.isConnected, web3.eth.accounts);
     await ipfs.add(this.state.buffer, (err, ipfsHash) => {
-      console.log('ipfsHash', err, ipfsHash);
+      console.log('ipfsHash', err, ipfsHash, ipfsHash[0].hash);
       //setState by setting ipfsHash to ipfsHash[0].hash       
       this.setState({ ipfsHash: ipfsHash[0].hash });
+      console.log(web3.utils.asciiToHex('asciiToHex', this.state.ipfsHash));
+      console.log(web3.utils.fromAscii('fromAscii', typeof(this.state.ipfsHash), this.state.ipfsHash));
+      const ipfs = web3.utils.fromAscii(this.state.ipfsHash);
+      const teststring = web3.utils.fromAscii('test');
       // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract      
-      //return the transaction hash from the ethereum contract       
-      storehash.methods.setHash(this.state.ipfsHash).send({ from: accounts[0] }, (error, transactionHash) => {
-         console.log(transactionHash); 
+      //return the transaction hash from the ethereum contract    
+        
+      console.log('account', accounts[0], 'ethAddress', ethAddress, ipfsHash); 
+      storehash.methods.setHash(
+        this.state.ipfsHash
+      ).send({ from: accounts[0] }, (error, transactionHash) => {
+         console.log('error', error, 'transactionHash', transactionHash); 
          this.setState({ transactionHash }); });
     })
   };
@@ -85,9 +95,5 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
 
 
