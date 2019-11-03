@@ -74,12 +74,13 @@ class App extends Component {
 
       const weightedCoupoon = 7;
       const weightedTerm = 14;
-
+      const totalPrice = 140000;
       storehash.methods.addLoanPool(
         this.state.ipfsHash,
         accounts[0],
         weightedCoupoon,
-        weightedTerm    
+        weightedTerm,
+        totalPrice   
       ).send({ from: accounts[0] }, (error, transactionHash) => {
          console.log('error', error, 'transactionHash', transactionHash); 
          this.setState({ transactionHash }); 

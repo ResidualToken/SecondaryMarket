@@ -3,7 +3,7 @@ import web3 from './Web3';
 
 //Your contract address
 
-const address = '0x04674B9e2B12E7269a43e5f9626d335e9A3C878f';
+const address = '0x67eAc18136B24fB1A92d7763deb8beA2608531fd';
 
 //Your contract ABI
 
@@ -33,6 +33,11 @@ const abi = [
 					{
 						"internalType": "uint256",
 						"name": "weightedTerm",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalAmount",
 						"type": "uint256"
 					},
 					{
@@ -83,6 +88,11 @@ const abi = [
 			},
 			{
 				"internalType": "uint256",
+				"name": "totalAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
 				"name": "postDate",
 				"type": "uint256"
 			}
@@ -127,6 +137,11 @@ const abi = [
 			{
 				"internalType": "uint256",
 				"name": "weightedTerm",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalAmount",
 				"type": "uint256"
 			}
 		],
@@ -180,6 +195,11 @@ const abi = [
 					{
 						"internalType": "uint256",
 						"name": "weightedTerm",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalAmount",
 						"type": "uint256"
 					},
 					{
