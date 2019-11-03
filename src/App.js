@@ -8,6 +8,7 @@ class App extends Component {
 
   state = {
     ipfsHash: null,
+    loanPools: null,
     buffer: '',
     ethAddress: '',
     transactionHash: '',
@@ -69,12 +70,21 @@ class App extends Component {
       //return the transaction hash from the ethereum contract    
         
       console.log('account', accounts[0], 'ethAddress', ethAddress, ipfsHash); 
-      storehash.methods.setHash(
-        this.state.ipfsHash
+      storehash.methods.addLoanPool(
+        this.state.ipfsHash,
+        accounts[0]
       ).send({ from: accounts[0] }, (error, transactionHash) => {
          console.log('error', error, 'transactionHash', transactionHash); 
          this.setState({ transactionHash }); });
     })
+
+    storehash.methods.getLoanPools().send({ from: accounts[0] }, (error, loanPools) => {
+       console.log('error', error, 'loanPools', loanPools); 
+       this.setState({ loanPools }); 
+      });
+
+
+
   };
 
   render() {
@@ -89,8 +99,7 @@ class App extends Component {
               
                 <Button bsStyle="primary" type="submit">             Send it             </Button>          </form><hr /> <Button onClick={this.onClick}> Get Transaction Receipt </Button> <hr />  <table bordered responsive>                <thead>                  <tr>                    <th>Tx Receipt Category</th>                    <th> </th>                    <th>Values</th>                  </tr>                </thead>
 
-        <tbody>                  <tr>                    <td>IPFS Hash stored on Ethereum</td>                    <td> : </td>                    <td>{this.state.ipfsHash}</td>                  </tr>                  <tr>                    <td>Ethereum Contract Address</td>                    <td> : </td>                    <td>{this.state.ethAddress}</td>                  </tr>                  <tr>                    <td>Tx # </td>                    <td> : </td>                    <td>{this.state.transactionHash}</td>                  </tr>                </tbody>            </table>        </grid>     </div>);
-
+               <tbody>                  <tr>                    <td>IPFS Hash stored on Ethereum</td>                    <td> : </td>                    <td>{this.state.ipfsHash}</td>                  </tr>                  <tr>                    <td>Ethereum Contract Address</td>                    <td> : </td>                    <td>{this.state.ethAddress}</td>                  </tr>                  <tr>                    <td>Tx # </td>                    <td> : </td>                    <td>{this.state.transactionHash}</td>                  </tr>                </tbody>            </table>       <br/> <div>LoanPools:  {this.state.loanPools}</div> </grid>     </div>);
   }
 }
 

@@ -3,7 +3,7 @@ import web3 from './Web3';
 
 //Your contract address
 
-const address = '0xD9F0F7A8aB3fC4aeD8e749c80568a11E99df0a5e';
+const address = '0x8c2ab134A79042C77f528eAD0573F1BBC0408eC6';
 
 //Your contract ABI
 
@@ -13,11 +13,16 @@ const abi = [
 		"inputs": [
 			{
 				"internalType": "string",
-				"name": "x",
+				"name": "ipfsHash",
 				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
 			}
 		],
-		"name": "setHash",
+		"name": "addLoanPool",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -26,12 +31,60 @@ const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getHash",
+		"name": "getLoanPools",
 		"outputs": [
 			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "postDate",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Contract.LoanPool[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "loanPools",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
 				"internalType": "string",
-				"name": "x",
+				"name": "ipfsHash",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "postDate",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
