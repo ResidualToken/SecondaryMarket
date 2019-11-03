@@ -70,9 +70,15 @@ class App extends Component {
       //return the transaction hash from the ethereum contract    
         
       console.log('account', accounts[0], 'ethAddress', ethAddress, ipfsHash); 
+
+      const weightedCoupoon = 7;
+      const weightedTerm = 14;
+
       storehash.methods.addLoanPool(
         this.state.ipfsHash,
-        accounts[0]
+        accounts[0],
+        weightedCoupoon,
+        weightedTerm    
       ).send({ from: accounts[0] }, (error, transactionHash) => {
          console.log('error', error, 'transactionHash', transactionHash); 
          this.setState({ transactionHash }); });

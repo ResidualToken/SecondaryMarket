@@ -3,31 +3,11 @@ import web3 from './Web3';
 
 //Your contract address
 
-const address = '0x8c2ab134A79042C77f528eAD0573F1BBC0408eC6';
+const address = '0xfAB47Dd1e8A20c7D9f74C341C96fbaf078F310C9';
 
 //Your contract ABI
 
 const abi = [
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "ipfsHash",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			}
-		],
-		"name": "addLoanPool",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
 	{
 		"constant": true,
 		"inputs": [],
@@ -47,11 +27,21 @@ const abi = [
 					},
 					{
 						"internalType": "uint256",
+						"name": "weightedCoupon",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "weightedTerm",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
 						"name": "postDate",
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct Contract.LoanPool[]",
+				"internalType": "struct LoanSecondaryMarketing.LoanPool[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -83,6 +73,16 @@ const abi = [
 			},
 			{
 				"internalType": "uint256",
+				"name": "weightedCoupon",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "weightedTerm",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
 				"name": "postDate",
 				"type": "uint256"
 			}
@@ -90,6 +90,57 @@ const abi = [
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "ipfsHash",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "weightedCoupon",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "weightedTerm",
+				"type": "uint256"
+			}
+		],
+		"name": "addLoanPool",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "loanPoolCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	}
 ];
 
