@@ -9,6 +9,7 @@ class App extends Component {
   state = {
     ipfsHash: null,
     loanPools: null,
+    totalLoanPools: 0,
     buffer: '',
     ethAddress: '',
     transactionHash: '',
@@ -81,13 +82,18 @@ class App extends Component {
         weightedTerm    
       ).send({ from: accounts[0] }, (error, transactionHash) => {
          console.log('error', error, 'transactionHash', transactionHash); 
-         this.setState({ transactionHash }); });
+         this.setState({ transactionHash }); 
+          storehash.methods.getLoanPools().call({ from: accounts[0] }, (error, loanPools) => {
+            console.log('error', error, loanPools, 'loanPools'); 
+            
+            this.setState({ loanPools }); 
+          });
+        });
+
+
     })
 
-    storehash.methods.getLoanPools().send({ from: accounts[0] }, (error, loanPools) => {
-       console.log('error', error, 'loanPools', loanPools); 
-       this.setState({ loanPools }); 
-      });
+
 
 
 

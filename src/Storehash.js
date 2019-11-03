@@ -3,13 +3,13 @@ import web3 from './Web3';
 
 //Your contract address
 
-const address = '0xfAB47Dd1e8A20c7D9f74C341C96fbaf078F310C9';
+const address = '0x04674B9e2B12E7269a43e5f9626d335e9A3C878f';
 
 //Your contract ABI
 
 const abi = [
 	{
-		"constant": true,
+		"constant": false,
 		"inputs": [],
 		"name": "getLoanPools",
 		"outputs": [
@@ -47,7 +47,7 @@ const abi = [
 			}
 		],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -84,6 +84,21 @@ const abi = [
 			{
 				"internalType": "uint256",
 				"name": "postDate",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalLoanPools",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -141,6 +156,46 @@ const abi = [
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "weightedCoupon",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "weightedTerm",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "postDate",
+						"type": "uint256"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct LoanSecondaryMarketing.LoanPool[]",
+				"name": "loanPools",
+				"type": "tuple[]"
+			}
+		],
+		"name": "getLoanPoolsEVENT",
+		"type": "event"
 	}
 ];
 
